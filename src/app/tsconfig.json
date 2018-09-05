@@ -7,9 +7,6 @@
         "target": "es6",
         "jsx": "react"
     },
-    "typeAcquisition": {
-        "exclude": ["node"]
-    },
     "include": [
         "**/*"
     ],
