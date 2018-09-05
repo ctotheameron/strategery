@@ -20,7 +20,8 @@
         "ordered-imports": false,
         "function-name": false,
         "variable-name": false,
-        "jsx-no-multiline-js": false
+        "jsx-no-multiline-js": false,
+        "import-name": false
     },
     "rulesDirectory": [],
     "linterOptions": {

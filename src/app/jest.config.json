@@ -5,8 +5,11 @@
     "moduleFileExtensions": [
         "ts", "tsx", "js", "jsx", "json", "node"
     ],
-    "collectCoverageFrom": [
-        "**/*.{ts,tsx}",
-        "!**/*.d.ts"
+    "setupFiles": [
+        "./tests/setup.ts"
+    ],
+    "testPathIgnorePatterns": [
+        "./config/*",
+        "./tests/setup.ts"
     ]
 }

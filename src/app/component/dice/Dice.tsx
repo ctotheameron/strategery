@@ -8,20 +8,19 @@ import { DiceRollRequest, DiceAction, DiceState } from '../../store/dice/types';
 import Result from './Result';
 
 
-const initialState = { sides: 4, number: 1 };
 type State = DiceRollRequest;
-
+type StateProps = DiceState;
 
 interface DispatchProps {
     onSubmit: (rollParams: State) => void;
 }
 
 
-type Props = DispatchProps & DiceState;
+export type Props = DispatchProps & StateProps;
 
 
-class Dice extends React.Component<Props, State> {
-    public readonly state: State = initialState;
+export class Dice extends React.Component<Props, State> {
+    public readonly state: State = { sides: 4, number: 1 };
 
 
     public componentDidMount() {
@@ -101,12 +100,12 @@ class Dice extends React.Component<Props, State> {
 }
 
 
-function mapStateToProps({ dice }: ApplicationState): DiceState {
+export function mapStateToProps({ dice }: ApplicationState): StateProps {
     return dice;
 }
 
 
-function mapDispatchToProps(
+export function mapDispatchToProps(
     dispatch: ThunkDispatch<ApplicationState, undefined, DiceAction>
 ): DispatchProps {
     return {
@@ -117,6 +116,6 @@ function mapDispatchToProps(
 }
 
 
-export default connect<DiceState, DispatchProps>(
+export default connect<StateProps, DispatchProps>(
     mapStateToProps, mapDispatchToProps
 )(Dice);
