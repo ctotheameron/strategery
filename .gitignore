@@ -1,0 +1,15 @@
+.DS_Store
+
+# Editors
+.idea/
+.vscode/
+
+# package directories
+node_modules
+
+# Build artifacts
+.env
+.env*
+.webpack
+coverage
+dist
