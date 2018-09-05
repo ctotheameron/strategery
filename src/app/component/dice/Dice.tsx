@@ -44,6 +44,7 @@ class Dice extends React.Component<Props, State> {
                             onChange={this.handleNumberChange}
                             type="number"
                             value={String(this.state.number)}
+                            min={0}
                         />
                     </label>
                     <br />
