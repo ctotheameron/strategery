@@ -7,7 +7,8 @@ export async function draw(request: CardsDrawRequest) {
         const res = await api.post('/draw', request);
         return res.data as CardsDraw;
     } catch (err) {
-        const message = err.response.data;
-        throw message ? new Error(message) : err;
+        let message = 'Uh oh!';
+        if (err.response && err.response.data) message = err.response.data;
+        throw new Error(message);
     }
 }

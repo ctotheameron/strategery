@@ -7,7 +7,8 @@ export async function roll(request: DiceRollRequest) {
         const res = await api.post('/roll', request);
         return res.data as DiceRoll;
     } catch (err) {
-        const message = err.response.data;
-        throw message ? new Error(message) : err;
+        let message = 'Uh oh!';
+        if (err.response && err.response.data) message = err.response.data;
+        throw new Error(message);
     }
 }
