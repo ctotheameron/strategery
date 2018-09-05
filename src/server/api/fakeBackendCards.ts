@@ -3,7 +3,7 @@ import log from '../util/log';
 const suits = ['♦︎', '♠︎', '♣︎', '♥︎'];
 
 const ranks = [
-    'A', 'K', 'Q', 'J', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1'
+    'A', 'K', 'Q', 'J', '10', '9', '8', '7', '6', '5', '4', '3', '2'
 ];
 
 const deck = suits.reduce((acc, suit) => (
