@@ -1,5 +1,3 @@
-import log from '../util/log';
-
 const suits = ['♦︎', '♠︎', '♣︎', '♥︎'];
 
 const ranks = [
@@ -11,13 +9,13 @@ const deck = suits.reduce((acc, suit) => (
 ), []);
 
 
-export function getCards(decks: number) {
+export function getCards(decks: number): Promise<string[]> {
     const cards = [...Array(decks)].reduce(acc => acc.concat(deck), []);
-    return Promise.resolve(cards);
+    return new Promise(resolve => setTimeout(() => resolve(cards), 100));
 }
 
 
-export function shuffleCards(cards: string[]) {
+export function shuffleCards(cards: string[]): Promise<string[]> {
     // Fischer Yates Shuffle
 
     let i = 0;
@@ -31,5 +29,5 @@ export function shuffleCards(cards: string[]) {
         cards[j] = temp;
     }
 
-    return Promise.resolve(cards);
+    return new Promise(resolve => setTimeout(() => resolve(cards), 100));
 }
