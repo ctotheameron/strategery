@@ -5,6 +5,8 @@
     ],
     "collectCoverageFrom": [
         "**/*.{ts,tsx}",
-        "!**/*.d.ts"
+        "!**/*.d.ts",
+        "!**/config/**",
+        "!**/webpack.*.ts"
     ]
 }

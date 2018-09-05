@@ -2,8 +2,8 @@ import * as React from 'react';
 import { CardsDraw } from '../../store/cards/types';
 
 
-interface Props {
-    draw: CardsDraw;
+export interface Props {
+    draw?: CardsDraw;
     isLoading?: boolean;
     error?: string;
 }

@@ -12,7 +12,7 @@ export interface CardsDrawRequest {
 // Response object for POST /cards
 export interface CardsDraw {
     request: CardsDrawRequest;
-    cards: number[];
+    cards: string[];
 }
 
 

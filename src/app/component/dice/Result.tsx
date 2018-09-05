@@ -2,8 +2,8 @@ import * as React from 'react';
 import { DiceRoll } from '../../store/dice/types';
 
 
-interface Props {
-    roll: DiceRoll;
+export interface Props {
+    roll?: DiceRoll;
     isLoading?: boolean;
     error?: string;
 }

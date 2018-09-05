@@ -11,20 +11,19 @@ import { makeRemoteDraw } from '../../store/cards/thunks';
 import Result from './Result';
 
 
-const initialState = { decks: 1, number: 1 };
 type State = CardsDrawRequest;
-
+type StateProps = CardsState;
 
 interface DispatchProps {
     onSubmit: (drawParams: State) => void;
 }
 
 
-type Props = DispatchProps & CardsState;
+export type Props = DispatchProps & StateProps;
 
 
-class Dice extends React.Component<Props, State> {
-    public readonly state: State = initialState;
+export class Cards extends React.Component<Props, State> {
+    public readonly state: State = { decks: 1, number: 1 };
 
 
     public componentDidMount() {
@@ -98,12 +97,12 @@ class Dice extends React.Component<Props, State> {
 }
 
 
-function mapStateToProps({ cards }: ApplicationState): CardsState {
+export function mapStateToProps({ cards }: ApplicationState): StateProps {
     return cards;
 }
 
 
-function mapDispatchToProps(
+export function mapDispatchToProps(
     dispatch: ThunkDispatch<ApplicationState, undefined, CardsAction>
 ): DispatchProps {
     return {
@@ -114,6 +113,6 @@ function mapDispatchToProps(
 }
 
 
-export default connect<CardsState, DispatchProps>(
+export default connect<StateProps, DispatchProps>(
     mapStateToProps, mapDispatchToProps
-)(Dice);
+)(Cards);
