@@ -32,7 +32,7 @@ class Dice extends React.Component<Props, State> {
 
 
     public render() {
-        const { isLoading, current, history } = this.props;
+        const { isLoading, current, history, error } = this.props;
 
         return (
             <>
@@ -67,7 +67,7 @@ class Dice extends React.Component<Props, State> {
                     <button disabled={isLoading} type="submit">Roll</button>
                 </form>
                 <h3>Result:</h3>
-                <Result roll={current} isLoading={isLoading} />
+                <Result roll={current} isLoading={isLoading} error={error}/>
                 <h3>History:</h3>
                 {history.map((roll, idx) => (
                     <div key={idx}>
