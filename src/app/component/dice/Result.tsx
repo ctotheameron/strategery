@@ -5,11 +5,12 @@ import { DiceRoll } from '../../store/dice/types';
 interface Props {
     roll: DiceRoll;
     isLoading?: boolean;
+    error?: string;
 }
 
 
 const Result: React.StatelessComponent<Props> = (props) => {
-    const { roll, isLoading } = props;
+    const { roll, isLoading, error } = props;
 
     if (isLoading) {
         return <>Rolling...</>;
@@ -29,6 +30,10 @@ const Result: React.StatelessComponent<Props> = (props) => {
                 )
             </>
         );
+    }
+
+    if (error) {
+        return <>Error: {error}</>;
     }
 
     return <></>;
