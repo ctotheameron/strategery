@@ -1,5 +1,5 @@
 import { action } from 'typesafe-actions';
-import { CardsActionType, CardsDraw } from './types';
+import { CardsActionType, CardsDraw, CardsDrawRequest } from './types';
 
 
 // Here we use the `action` helper function provided by `typesafe-actions`.
@@ -11,8 +11,8 @@ import { CardsActionType, CardsDraw } from './types';
 // type them properly as well.
 
 
-export function drawIsLoading(isLoading: boolean) {
-    return action(CardsActionType.IS_LOADING, isLoading);
+export function drawRequest(request: CardsDrawRequest) {
+    return action(CardsActionType.DRAW_REQUEST, request);
 }
 
 

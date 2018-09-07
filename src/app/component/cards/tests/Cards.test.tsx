@@ -2,14 +2,10 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 import { ApplicationState } from '../../../store';
+import { drawRequest } from '../../../store/cards/actions';
+
 import { Cards, Props, mapStateToProps, mapDispatchToProps } from '../Cards';
 import Result from '../Result';
-import { makeRemoteDraw } from '../../../store/cards/thunks';
-
-
-jest.mock('../../../store/cards/thunks', () => ({
-    makeRemoteDraw: jest.fn(params => `makeRemoteDraw${params}`)
-}));
 
 
 beforeEach(jest.clearAllMocks);
@@ -122,6 +118,6 @@ describe('mapDispatchToProps', () => {
         const drawParams = { number: 1, decks: 2 };
         onSubmit(drawParams);
 
-        expect(dispatch).toBeCalledWith(makeRemoteDraw(drawParams));
+        expect(dispatch).toBeCalledWith(drawRequest(drawParams));
     });
 });

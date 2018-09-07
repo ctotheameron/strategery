@@ -1,5 +1,9 @@
 import { ActionType } from 'typesafe-actions';
+import { Middleware, Dispatch } from 'redux';
+import { ThunkDispatch, ThunkAction } from 'redux-thunk';
+
 import * as actions from './actions';
+import { ApplicationState } from '..';
 
 
 // Request object for POST /cards/roll
@@ -23,12 +27,30 @@ export interface CardsDraw {
 // personally, I use the `@@context/ACTION_TYPE` convention, to follow the
 // convention of Redux's `@@INIT` action.
 export enum CardsActionType {
+    DRAW_REQUEST = '@@cards/DRAW_REQUEST',
     DRAW_SUCCESS = '@@cards/DRAW_SUCCESS',
-    DRAW_ERROR = '@@cards/DRAW_ERROR',
-    IS_LOADING = '@@cards/IS_LOADING'
+    DRAW_ERROR = '@@cards/DRAW_ERROR'
 }
 
 export type CardsAction = ActionType<typeof actions>;
+
+
+export type CardsThunkAction = ThunkAction<
+    void, ApplicationState, undefined, CardsAction
+>;
+
+
+export type CardsDispatch = Dispatch<CardsAction>;
+
+
+export type CardsThunkDispatch = ThunkDispatch<
+    ApplicationState, undefined, CardsAction
+>;
+
+
+export type CardsMiddleware = Middleware<
+    undefined, ApplicationState, CardsDispatch & CardsThunkDispatch
+>;
 
 
 // Declare state types with `readonly` modifier to get compile time

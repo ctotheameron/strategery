@@ -1,5 +1,5 @@
 import { action } from 'typesafe-actions';
-import { DiceActionType, DiceRoll } from './types';
+import { DiceActionType, DiceRoll, DiceRollRequest } from './types';
 
 
 // Here we use the `action` helper function provided by `typesafe-actions`.
@@ -11,8 +11,8 @@ import { DiceActionType, DiceRoll } from './types';
 // type them properly as well.
 
 
-export function rollIsLoading(isLoading: boolean) {
-    return action(DiceActionType.IS_LOADING, isLoading);
+export function rollRequest(request: DiceRollRequest) {
+    return action(DiceActionType.ROLL_REQUEST, request);
 }
 
 

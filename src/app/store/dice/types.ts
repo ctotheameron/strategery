@@ -1,5 +1,9 @@
 import { ActionType } from 'typesafe-actions';
+import { Middleware, Dispatch } from 'redux';
+import { ThunkDispatch, ThunkAction } from 'redux-thunk';
+
 import * as actions from './actions';
+import { ApplicationState } from '..';
 
 
 // Request object for POST /dice/roll
@@ -26,10 +30,28 @@ export interface DiceRoll {
 export enum DiceActionType {
     ROLL_SUCCESS = '@@dice/ROLL_SUCCESS',
     ROLL_ERROR = '@@dice/ROLL_ERROR',
-    IS_LOADING = '@@dice/IS_LOADING'
+    ROLL_REQUEST = '@@dice/ROLL_REQUEST'
 }
 
 export type DiceAction = ActionType<typeof actions>;
+
+
+export type DiceThunkAction = ThunkAction<
+    void, ApplicationState, undefined, DiceAction
+>;
+
+
+export type DiceDispatch = Dispatch<DiceAction>;
+
+
+export type DiceThunkDispatch = ThunkDispatch<
+    ApplicationState, undefined, DiceAction
+>;
+
+
+export type DiceMiddleware = Middleware<
+    undefined, ApplicationState, DiceDispatch & DiceThunkDispatch
+>;
 
 
 // Declare state types with `readonly` modifier to get compile time

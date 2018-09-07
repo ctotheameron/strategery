@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
 
+import {
+    DiceRollRequest, DiceState, DiceDispatch
+} from '../../store/dice/types';
+
+import { rollRequest } from '../../store/dice/actions';
 import { ApplicationState } from '../../store';
-import { makeRemoteRoll } from '../../store/dice/thunks';
-import { DiceRollRequest, DiceAction, DiceState } from '../../store/dice/types';
+
 import Result from './Result';
 
 
@@ -105,12 +108,10 @@ export function mapStateToProps({ dice }: ApplicationState): StateProps {
 }
 
 
-export function mapDispatchToProps(
-    dispatch: ThunkDispatch<ApplicationState, undefined, DiceAction>
-): DispatchProps {
+export function mapDispatchToProps(dispatch: DiceDispatch): DispatchProps {
     return {
         onSubmit(rollParams: State) {
-            dispatch(makeRemoteRoll(rollParams));
+            dispatch(rollRequest(rollParams));
         }
     };
 }
