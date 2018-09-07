@@ -1,12 +1,8 @@
-import {
-    Store, createStore, applyMiddleware, combineReducers, Middleware
-} from 'redux';
-
+import { Store, createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import reduxLogger from 'redux-logger';
 
-import config from '../config';
-import { Stage } from '../config/types';
+import config, { Stage } from '../config';
 import middleware from './middleware';
 import reducers, { ApplicationState as State } from './reducers';
 

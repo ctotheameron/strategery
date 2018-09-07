@@ -5,6 +5,7 @@
   "private": true,
   "main": "dist/server.js",
   "scripts": {
+    "precommit": "lint-staged --debug",
     "start": "yarn npm-run-all -p start:server start:app",
     "lint": "yarn npm-run-all -p lint:server lint:app",
     "test": "jest --config=jest.config.json",
@@ -102,10 +103,13 @@
     "webpack-node-externals": "1.7.2"
   },
   "lint-staged": {
-    "*": [
-      "yarn lint"
+    "src/app/**/*.{ts,tsx}": [
+      "yarn lint:app"
     ],
-    "src/**/*.js": [
+    "src/server/**/*.{ts,tsx}": [
+      "yarn lint:server"
+    ],
+    "src/**/*.{ts,tsx}": [
       "yarn test --passWithNoTests"
     ]
   }
