@@ -7,8 +7,10 @@ import App from './component/App';
 import { configureStore } from './store';
 
 
+const store = configureStore({});
+
 const app = (
-    <Provider store={configureStore({})}>
+    <Provider store={store}>
         <BrowserRouter>
             <Route path="/" component={App} />
         </BrowserRouter>

@@ -1,15 +1,13 @@
-# **koa-react-starter-service**
-
+# koa-react-starter-service
 
 Opinionated boilerplate for Koa+React service
-
 
 ## Pre-Requisites
 
 This repo recommends using Node v10.9.0. [check-engines](https://github.com/kruppel/check-engines#readme) will be prompt you to use the right version before performing any actions. We generally use [nvm](https://github.com/creationix/nvm) to switch between multiple node versions in dev boxes. So follow the instructions to install nvm and when done..
 
 ```bash
-$ nvm install 10.9.0
+nvm install 10.9.0
 ```
 
 ## Installation
@@ -17,14 +15,14 @@ $ nvm install 10.9.0
 Clone the repo and install the depencies. We use `yarn` in the place of `npm ` just because we like it more. To install yarn, see [here](https://yarnpkg.com/en/docs/install#mac-stable)
 
 ```bash
-$ git clone git@github.com:serviceslabs/koa-react-starter-service.git
-$ cd koa-react-starter-service
-$ yarn install
+git clone git@github.com:serviceslabs/koa-react-starter-service.git
+cd koa-react-starter-service
+yarn install
 ```
 
 ## Feature
 
-#### App
+### App
 
 * Typescript  😈
 * react (16.4.2)
@@ -41,43 +39,46 @@ Server
 * bunyan
 * axios
 
-#### UI Theme
+### UI Theme
 
 * None (we recommend Material-UI)
 
-#### Testing
+### Testing
 
 * jest
 * enzyme
 
-#### Build and Linters
+### Build and Linters
 
 * webpack
 * tslint
 * babel
 
-
 ## Available Scripts
 
-### `npm start:app`
+### `yarn start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:8080 to view it in the browser.
+Runs both the app and server in development mode (see below).
 
-Hot and Live Reload are supported.<br>
+### `yarn start:app`
+
+Runs the app in the development mode.
+Open <http://localhost:8080> to view it in the browser.
+
+Hot and Live Reload are supported.
 You will also see any linter errors in the console.
 
-### `npm start:server`
+### `yarn start:server`
 
 Runs the koa.js server in development mode listening on port 4000.
 
-### `npm test`
+### `yarn test`
 
-Launches the test runner in the interactive watch mode for both server and app.<br>
+Launches the test runner in the interactive watch mode for both server and app.
 
-### `npm run build`
+### `yarn run build`
 
-Builds the app for production to the `dist` folder.<br>
+Builds the app for production to the `dist` folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
+The build is minified and the filenames include the hashes.
