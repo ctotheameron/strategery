@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
 
 import {
-    CardsDrawRequest, CardsAction, CardsState
+    CardsDrawRequest, CardsDispatch, CardsState
 } from '../../store/cards/types';
 
 import { ApplicationState } from '../../store';
-import { makeRemoteDraw } from '../../store/cards/thunks';
 import Result from './Result';
+import { drawRequest } from '../../store/cards/actions';
 
 
 type State = CardsDrawRequest;
@@ -102,13 +101,9 @@ export function mapStateToProps({ cards }: ApplicationState): StateProps {
 }
 
 
-export function mapDispatchToProps(
-    dispatch: ThunkDispatch<ApplicationState, undefined, CardsAction>
-): DispatchProps {
+export function mapDispatchToProps(dispatch: CardsDispatch): DispatchProps {
     return {
-        onSubmit(drawParams: State) {
-            dispatch(makeRemoteDraw(drawParams));
-        }
+        onSubmit: (drawParams: State) => dispatch(drawRequest(drawParams))
     };
 }
 

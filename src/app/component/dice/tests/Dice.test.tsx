@@ -2,14 +2,10 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 import { ApplicationState } from '../../../store';
+import { rollRequest } from '../../../store/dice/actions';
+
 import { Dice, Props, mapStateToProps, mapDispatchToProps } from '../Dice';
 import Result from '../Result';
-import { makeRemoteRoll } from '../../../store/dice/thunks';
-
-
-jest.mock('../../../store/dice/thunks', () => ({
-    makeRemoteRoll: jest.fn(params => `makeRemoteRoll${params}`)
-}));
 
 
 beforeEach(jest.clearAllMocks);
@@ -122,6 +118,6 @@ describe('mapDispatchToProps', () => {
         const rollParams = { number: 1, sides: 2 };
         onSubmit(rollParams);
 
-        expect(dispatch).toBeCalledWith(makeRemoteRoll(rollParams));
+        expect(dispatch).toBeCalledWith(rollRequest(rollParams));
     });
 });

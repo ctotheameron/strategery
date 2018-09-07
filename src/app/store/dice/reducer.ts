@@ -1,9 +1,9 @@
 import { Reducer } from 'redux';
-import { DiceActionType, DiceState } from './types';
+import { DiceActionType, DiceState, DiceAction } from './types';
 
 
 // Type-safe initialState!
-const initialState: DiceState = {
+const initial: DiceState = {
     isLoading: false,
     current: undefined,
     history: [],
@@ -13,15 +13,15 @@ const initialState: DiceState = {
 
 // Thanks to Redux 4's much simpler typings, we can take away a lot of typings
 // on the reducer side, everything will remain type-safe.
-const reducer: Reducer<DiceState> = (state = initialState, action) => {
+const reducer: Reducer<DiceState> = (state = initial, action: DiceAction) => {
     switch (action.type) {
 
-    case DiceActionType.IS_LOADING: {
+    case DiceActionType.ROLL_REQUEST: {
         return {
             ...state,
-            isLoading: action.payload,
-            current: action.payload ? undefined : state.current,
-            history: action.payload && state.current
+            isLoading: true,
+            current: undefined,
+            history: state.current
                 ? [state.current, ...state.history]
                 : state.history
         };
@@ -30,6 +30,7 @@ const reducer: Reducer<DiceState> = (state = initialState, action) => {
     case DiceActionType.ROLL_SUCCESS: {
         return {
             ...state,
+            isLoading: false,
             current: action.payload,
             error: undefined
         };
@@ -38,6 +39,7 @@ const reducer: Reducer<DiceState> = (state = initialState, action) => {
     case DiceActionType.ROLL_ERROR: {
         return {
             ...state,
+            isLoading: false,
             error: action.payload,
             current: undefined
         };

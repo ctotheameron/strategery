@@ -1,24 +1,15 @@
-import { ApplicationState } from '../';
-import { ThunkAction } from 'redux-thunk';
-
 import { draw } from './service';
-import { drawError, drawIsLoading, drawSuccess } from './actions';
-import { CardsDrawRequest, CardsAction } from './types';
+import { drawError, drawSuccess } from './actions';
+import { CardsDrawRequest, CardsThunkAction } from './types';
 
 
-export function makeRemoteDraw(
-    request: CardsDrawRequest
-): ThunkAction<void, ApplicationState, undefined, CardsAction> {
+export function makeRemoteDraw(request: CardsDrawRequest): CardsThunkAction {
     return async (dispatch) => {
-        dispatch(drawIsLoading(true));
-
         try {
             const drawResponse = await draw(request);
             dispatch(drawSuccess(drawResponse));
         } catch (err) {
             dispatch(drawError(err.message));
         }
-
-        dispatch(drawIsLoading(false));
     };
 }
