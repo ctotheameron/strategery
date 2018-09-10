@@ -8,8 +8,8 @@ import { CardsState } from './cards/types';
 
 // The top-level state object
 export interface ApplicationState {
-    dice?: DiceState;
-    cards?: CardsState;
+    dice: DiceState;
+    cards: CardsState;
 }
 
 

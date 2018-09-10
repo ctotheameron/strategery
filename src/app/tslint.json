@@ -21,7 +21,8 @@
         "function-name": false,
         "variable-name": false,
         "jsx-no-multiline-js": false,
-        "import-name": false
+        "import-name": false,
+        "no-null-keyword": true
     },
     "rulesDirectory": [],
     "linterOptions": {

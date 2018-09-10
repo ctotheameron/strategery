@@ -1,8 +1,5 @@
 import { createStore, applyMiddleware, StoreEnhancer } from 'redux';
-import reduxThunk from 'redux-thunk';
-import reduxLogger from 'redux-logger';
 
-import middleware from '../middleware';
 import reducers from '../reducers';
 import { configureStore } from '../';
 

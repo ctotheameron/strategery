@@ -8,16 +8,15 @@ import { bunyanToGelf } from 'gelf-stream';
 import { Writable } from 'stream';
 
 
-const GELF_LEVEL = new Map<number, string>([
-    [0, 'EMERGENCY'],
-    [1, 'ALERT'],
-    [2, 'CRITICAL'],
-    [3, 'ERROR'],
-    [4, 'WARNING'],
-    [5, 'NOTICE'],
-    [6, 'INFO'],
-    [7, 'DEBUG']
-]);
+function gelfLevel(number: number) {
+    switch (number) {
+    case 0: return 'EMERGENCY';
+    case 3: return 'ERROR';
+    case 6: return 'INFO';
+    case 7: return 'DEBUG';
+    default: return 'WARNING';
+    }
+}
 
 
 function makeGelfConsoleStream(name: string) {
@@ -30,9 +29,7 @@ function makeGelfConsoleStream(name: string) {
             gelfFormat.source = name;
             gelfFormat.message = gelfFormat.short_message;
             gelfFormat['@timestamp'] = new Date();
-            gelfFormat.level = GELF_LEVEL.get(
-                Number(gelfFormat.level)
-            ) || 'WARN';
+            gelfFormat.level = gelfLevel(Number(gelfFormat.level));
 
             // tslint:disable-next-line no-console
             console.log(JSON.stringify(gelfFormat));

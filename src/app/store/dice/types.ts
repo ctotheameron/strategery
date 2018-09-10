@@ -37,7 +37,7 @@ export type DiceAction = ActionType<typeof actions>;
 
 
 export type DiceThunkAction = ThunkAction<
-    void, ApplicationState, undefined, DiceAction
+    void, ApplicationState | undefined, undefined, DiceAction
 >;
 
 

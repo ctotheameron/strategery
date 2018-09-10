@@ -13,7 +13,7 @@ const initial: DiceState = {
 
 // Thanks to Redux 4's much simpler typings, we can take away a lot of typings
 // on the reducer side, everything will remain type-safe.
-const reducer: Reducer<DiceState> = (state = initial, action: DiceAction) => {
+const reducer: Reducer<DiceState, DiceAction> = (state = initial, action) => {
     switch (action.type) {
 
     case DiceActionType.ROLL_REQUEST: {

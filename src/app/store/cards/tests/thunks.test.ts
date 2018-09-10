@@ -17,7 +17,7 @@ describe('makeRemoteDraw', () => {
         const request = { number: 1, decks: 2 };
         const response = { request, cards: ['a'] };
         (draw as jest.Mock).mockReturnValueOnce(Promise.resolve(response));
-        await makeRemoteDraw(request)(dispatch, null, null);
+        await makeRemoteDraw(request)(dispatch, () => undefined, undefined);
         expect(dispatch).toBeCalledWith(drawSuccess(response));
     });
 
@@ -27,7 +27,7 @@ describe('makeRemoteDraw', () => {
         const message = 'message';
         const error = { message };
         (draw as jest.Mock).mockReturnValueOnce(Promise.reject(error));
-        await makeRemoteDraw(request)(dispatch, null, null);
+        await makeRemoteDraw(request)(dispatch, () => undefined, undefined);
         expect(dispatch).toBeCalledWith(drawError(message));
     });
 });

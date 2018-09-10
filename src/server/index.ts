@@ -67,7 +67,7 @@ app.use(
  * Start server
  */
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || '4000';
 
 app.listen(PORT, () => {
     log.info(`Server listening on port ${PORT}`);

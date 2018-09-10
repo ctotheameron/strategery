@@ -17,7 +17,7 @@ describe('makeRemoteRoll', () => {
         const request = { number: 1, sides: 2 };
         const response = { request, sum: 2, rolls: [2] };
         (roll as jest.Mock).mockReturnValueOnce(Promise.resolve(response));
-        await makeRemoteRoll(request)(dispatch, null, null);
+        await makeRemoteRoll(request)(dispatch, () => undefined, undefined);
         expect(dispatch).toBeCalledWith(rollSuccess(response));
     });
 
@@ -27,7 +27,7 @@ describe('makeRemoteRoll', () => {
         const message = 'message';
         const error = { message };
         (roll as jest.Mock).mockReturnValueOnce(Promise.reject(error));
-        await makeRemoteRoll(request)(dispatch, null, null);
+        await makeRemoteRoll(request)(dispatch, () => undefined, undefined);
         expect(dispatch).toBeCalledWith(rollError(message));
     });
 });

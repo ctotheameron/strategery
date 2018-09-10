@@ -117,6 +117,4 @@ export function mapDispatchToProps(dispatch: DiceDispatch): DispatchProps {
 }
 
 
-export default connect<StateProps, DispatchProps>(
-    mapStateToProps, mapDispatchToProps
-)(Dice);
+export default connect(mapStateToProps, mapDispatchToProps)(Dice);

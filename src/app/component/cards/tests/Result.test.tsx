@@ -12,15 +12,13 @@ test('should display loading message when isLoading', () => {
 
 
 test('should list all the cards for the draw', () => {
-    const props: Props = {
-        draw: {
-            cards: ['1', '2', '3'],
-            request: { decks: 1, number: 1 }
-        }
+    const draw = {
+        cards: ['1', '2', '3'],
+        request: { decks: 1, number: 1 }
     };
 
-    const result = shallow(<Result {...props} />);
-    props.draw.cards.forEach((val, idx) => {
+    const result = shallow(<Result draw={draw} />);
+    draw.cards.forEach((val, idx) => {
         expect(result.childAt(idx).text()).toMatch(val);
     });
 });
