@@ -36,7 +36,7 @@ export type CardsAction = ActionType<typeof actions>;
 
 
 export type CardsThunkAction = ThunkAction<
-    void, ApplicationState, undefined, CardsAction
+    void, ApplicationState | undefined, undefined, CardsAction
 >;
 
 

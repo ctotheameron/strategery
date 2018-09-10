@@ -13,3 +13,4 @@ node_modules
 .webpack
 coverage
 dist
+newrelic_agent.log

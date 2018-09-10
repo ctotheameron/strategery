@@ -35,6 +35,12 @@ test('should show request for the roll', () => {
 
 
 test('should list all the rolls for the roll', () => {
+    const roll = {
+        sum: 6,
+        rolls: [1, 2, 3],
+        request: { sides: 3, number: 3 }
+    };
+
     const props: Props = {
         roll: {
             sum: 6,
@@ -44,7 +50,7 @@ test('should list all the rolls for the roll', () => {
     };
 
     const result = shallow(<Result {...props} />);
-    props.roll.rolls.forEach((val, idx) => {
+    roll.rolls.forEach((val, idx) => {
         expect(result.childAt(idx + 8).text()).toMatch(`${val}`);
     });
 });

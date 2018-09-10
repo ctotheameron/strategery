@@ -16,7 +16,9 @@
         "interface-name": false,
         "object-literal-sort-keys": false,
         "align": false,
-        "ordered-imports": false
+        "ordered-imports": false,
+        "import-name": false,
+        "no-null-keyword": true
     },
     "rulesDirectory": [],
     "linterOptions": {

@@ -20,13 +20,10 @@ describe('<Dice />', () => {
 
 
     test('should seed state with most recent current request params', () => {
-        const props: Props = {
-            ...defaultProps,
-            current: { sum: 2, rolls: [], request: { number: 2, sides: 2 } }
-        };
-
+        const current = { sum: 2, rolls: [], request: { number: 2, sides: 2 } };
+        const props: Props = { ...defaultProps, current };
         const dice = shallow(<Dice {...props} />);
-        expect(dice.state()).toMatchObject(props.current.request);
+        expect(dice.state()).toMatchObject(current.request);
     });
 
 

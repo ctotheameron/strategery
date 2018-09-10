@@ -20,13 +20,14 @@ describe('<Cards />', () => {
 
 
     test('should seed state with most recent current request params', () => {
+        const request = { number: 2, decks: 2 };
         const props: Props = {
             ...defaultProps,
-            current: { cards: [], request: { number: 2, decks: 2 } }
+            current: { request, cards: [] }
         };
 
         const cards = shallow(<Cards {...props} />);
-        expect(cards.state()).toMatchObject(props.current.request);
+        expect(cards.state()).toMatchObject(request);
     });
 
 

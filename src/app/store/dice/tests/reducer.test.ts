@@ -1,4 +1,4 @@
-import { DiceState } from '../types';
+import { DiceState, DiceAction } from '../types';
 import { diceReducer } from '../reducer';
 import { rollRequest, rollSuccess, rollError } from '../actions';
 
@@ -133,7 +133,7 @@ describe('default', () => {
     test('should return initialState', () => {
         const action = { type: 'foo', payload: 'bar' };
 
-        expect(diceReducer(undefined, action)).toMatchObject({
+        expect(diceReducer(undefined, action as DiceAction)).toMatchObject({
             isLoading: false,
             current: undefined,
             history: [],

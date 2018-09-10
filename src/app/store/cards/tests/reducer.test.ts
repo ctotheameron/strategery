@@ -1,4 +1,4 @@
-import { CardsState } from '../types';
+import { CardsState, CardsAction } from '../types';
 import { cardsReducer } from '../reducer';
 import { drawRequest, drawSuccess, drawError } from '../actions';
 
@@ -119,7 +119,7 @@ describe('default', () => {
     test('should return initialState', () => {
         const action = { type: 'foo', payload: 'bar' };
 
-        expect(cardsReducer(undefined, action)).toMatchObject({
+        expect(cardsReducer(undefined, action as CardsAction)).toMatchObject({
             isLoading: false,
             current: undefined,
             history: [],

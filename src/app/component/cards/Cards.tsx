@@ -108,6 +108,4 @@ export function mapDispatchToProps(dispatch: CardsDispatch): DispatchProps {
 }
 
 
-export default connect<StateProps, DispatchProps>(
-    mapStateToProps, mapDispatchToProps
-)(Cards);
+export default connect(mapStateToProps, mapDispatchToProps)(Cards);
