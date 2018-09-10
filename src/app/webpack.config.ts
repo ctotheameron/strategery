@@ -1,9 +1,18 @@
+import { join, resolve } from 'path';
+
+// tslint:disable-next-line no-var-requires
+const importFresh = require('import-fresh');
+
+process.env.NODE_CONFIG_DIR = resolve(__dirname, 'config');
+process.env.NODE_CONFIG_STRICT_MODE = 'true';
+
+const config = importFresh('config');
+
+import { Configuration, DefinePlugin } from 'webpack';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
-import { join } from 'path';
-import { Configuration } from 'webpack';
 
 
-const config: Configuration = {
+const webpackConfig: Configuration = {
     context: __dirname,
     name: 'app',
     mode: 'production',
@@ -47,9 +56,10 @@ const config: Configuration = {
     },
 
     plugins: [
+        new DefinePlugin({ CONFIG: JSON.stringify(config) }),
         new HtmlWebpackPlugin({ template: './public/index.html' })
     ]
 };
 
 
-export default config;
+export default webpackConfig;

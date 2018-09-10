@@ -1,9 +1,13 @@
 import { join, resolve } from 'path';
 
+// tslint:disable-next-line no-var-requires
+const importFresh = require('import-fresh');
+
 process.env.NODE_CONFIG_DIR = resolve(__dirname, 'config');
 process.env.NODE_CONFIG_STRICT_MODE = 'true';
 
-import * as config from 'config';
+const config = importFresh('config');
+
 import { Configuration, DefinePlugin } from 'webpack';
 import webpackNodeExternals = require('webpack-node-externals');
 
