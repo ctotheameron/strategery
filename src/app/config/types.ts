@@ -1,8 +1,8 @@
 export enum Stage {
     Development = 'development',
+    Test = 'test',
     Staging = 'staging',
     Production = 'production',
-    Test = 'test',
     Unknown = 'unknown'
 }
 
