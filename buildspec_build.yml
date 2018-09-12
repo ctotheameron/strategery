@@ -25,4 +25,4 @@ phases:
 artifacts:
     files: $STAGE-imagedefinitions.json
 cache:
-  path: /var/lib/docker
+    path: /var/lib/docker
