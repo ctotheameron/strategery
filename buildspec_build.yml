@@ -1,12 +1,13 @@
 version: 0.2
 
 phases:
-  pre_build:
+  install:
     commands:
       - yarn
+  pre_build:
+    commands:
+      - NODE_ENV=$STAGE
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - yarn lint
-      - yarn test
   build:
     commands:
       - echo $IMAGE_TAG > version.txt
