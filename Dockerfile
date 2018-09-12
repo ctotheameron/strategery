@@ -14,12 +14,10 @@ RUN mkdir $APP
 WORKDIR $APP
 
 # Install app dependencies
-COPY package.json $APP/
-COPY yarn.lock $APP/
+COPY . $APP
 RUN yarn
 
 # Bundle app source
-COPY . $APP
 
 EXPOSE 8080
 RUN yarn build
