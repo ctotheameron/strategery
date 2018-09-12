@@ -1,5 +1,7 @@
 # koa-react-starter-service
 
+![Build Status](https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoic01RblM3VVFoNE9yYVY5SkFIN0JXTkp4aTVodHZEdkJiRmlzaTBxRkpDbUJOV3EzU1R4eUhia1BDVGZmcStUcWY3ZENGQmZLa3VxR1hFNWRPRkIrUFVBPSIsIml2UGFyYW1ldGVyU3BlYyI6InQvd0VWY0UyNE03Nnl4LzIiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+
 Opinionated boilerplate for Koa+React service
 
 ## Pre-Requisites
