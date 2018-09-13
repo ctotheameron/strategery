@@ -57,10 +57,10 @@ app.use(mount('/api', api));
 
 
 app.use(status.routes());
-app.use(serve(resolve(__dirname, 'assets')));
 app.use(
     fallback({ htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'] })
 );
+app.use(serve(resolve(__dirname, 'assets')));
 
 
 /**
