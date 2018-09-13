@@ -8,10 +8,10 @@ Opinionated boilerplate for Koa+React service
 
 ## Pre-Requisites
 
-This repo recommends using Node v10.9.0. [check-engines](https://github.com/kruppel/check-engines#readme) will be prompt you to use the right version before performing any actions. We generally use [nvm](https://github.com/creationix/nvm) to switch between multiple node versions in dev boxes. So follow the instructions to install nvm and when done..
+This repo recommends using Node v10.10.0. [check-engines](https://github.com/kruppel/check-engines#readme) will be prompt you to use the right version before performing any actions. We generally use [nvm](https://github.com/creationix/nvm) to switch between multiple node versions in dev boxes. So follow the instructions to install nvm and when done..
 
 ```bash
-nvm install 10.9.0
+nvm install 10.10.0
 ```
 
 ## Installation
