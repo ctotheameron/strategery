@@ -15,8 +15,8 @@ WORKDIR $APP
 # Install app dependencies
 COPY package.json $APP/
 COPY yarn.lock $APP/
-COPY src/app/types $APP/
-COPY src/server/types $APP/
+COPY src/app/types/* $APP/
+COPY src/server/types/* $APP/
 RUN yarn
 
 # Bundle app source
