@@ -23,7 +23,8 @@ phases:
       - printf '[{"name":"koa-react-staging","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > staging-imagedefinitions.json
       - printf '[{"name":"koa-react-prod","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > production-imagedefinitions.json
 artifacts:
-    files: staging-imagedefinitions.json
-    files: production-imagedefinitions.json
+    files:
+      - staging-imagedefinitions.json
+      - production-imagedefinitions.json
 cache:
     path: /var/lib/docker
