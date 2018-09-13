@@ -7,7 +7,6 @@ phases:
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION)
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - NODE_ENV=$STAGE
   build:
     commands:
       - echo Build started on `date`
@@ -21,8 +20,10 @@ phases:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"koa-react-%s","imageUri":"%s"}]' $STAGE $REPOSITORY_URI:$IMAGE_TAG > $STAGE-imagedefinitions.json
+      - printf '[{"name":"koa-react-staging","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > staging-imagedefinitions.json
+      - printf '[{"name":"koa-react-prod","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > production-imagedefinitions.json
 artifacts:
-    files: $STAGE-imagedefinitions.json
+    files: staging-imagedefinitions.json
+    files: production-imagedefinitions.json
 cache:
     path: /var/lib/docker
