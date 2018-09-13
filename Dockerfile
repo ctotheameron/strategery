@@ -7,20 +7,23 @@ ENV APP /koa-react-starter-service
 
 #pass like --build-arg profile=production to build other profile
 ARG profile=staging
-ENV NODE_ENV=${profile}
 ENV PORT=8080
 
 RUN mkdir $APP
 WORKDIR $APP
 
 # Install app dependencies
-COPY . $APP
+COPY package.json $APP/
+COPY yarn.lock $APP/
+COPY src/app/types $APP/
+COPY src/server/types $APP/
 RUN yarn
 
 # Bundle app source
+COPY . $APP
 
 EXPOSE 8080
-RUN yarn build
+RUN NODE_ENV=${profile} yarn build
 
 WORKDIR $APP/dist
 
