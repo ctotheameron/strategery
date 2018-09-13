@@ -46,7 +46,6 @@ const api = new Koa();
 if (koaNewrelic) api.use(koaNewrelic);
 api.use(cors());
 api.use(bodyparser());
-api.use(status.routes());
 api.use(dice.routes());
 api.use(cards.routes());
 app.use(mount('/api', api));
@@ -57,6 +56,7 @@ app.use(mount('/api', api));
  */
 
 
+app.use(status.routes());
 app.use(serve(resolve(__dirname, 'assets')));
 app.use(
     fallback({ htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'] })
