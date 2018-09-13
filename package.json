@@ -112,7 +112,7 @@
       "yarn lint:server"
     ],
     "src/**/*.{ts,tsx}": [
-      "yarn test --passWithNoTests"
+      "yarn test --findRelatedTests"
     ]
   }
 }
