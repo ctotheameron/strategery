@@ -21,7 +21,7 @@ describe('GET /status', () => {
 
 
     test('has correct path', () => {
-        expect(routerLayer.path).toBe('/');
+        expect(routerLayer.path).toBe('/status');
     });
 
 
