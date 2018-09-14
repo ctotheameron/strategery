@@ -69,14 +69,22 @@ export class Dice extends React.Component<Props, State> {
                     <button disabled={isLoading} type="submit">Roll</button>
                 </form>
                 <h3>Result:</h3>
-                <Result roll={current} isLoading={isLoading} error={error}/>
+                    <span id="roll-result">
+                        <Result
+                            roll={current}
+                            isLoading={isLoading}
+                            error={error}
+                        />
+                    </span>
                 <h3>History:</h3>
-                {history.map((roll, idx) => (
-                    <div key={idx}>
-                        <Result roll={roll} />
-                        {idx + 1 !== history.length && <br />}
-                    </div>
-                ))}
+                <div id="roll-history">
+                    {history.map((roll, idx) => (
+                        <span key={idx}>
+                            <Result roll={roll} />
+                            {idx + 1 !== history.length && <br />}
+                        </span>
+                    ))}
+                </div>
             </>
         );
     }

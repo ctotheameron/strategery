@@ -1,0 +1,29 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended",
+        "tslint-eslint-rules",
+        "tslint-config-airbnb"
+    ],
+    "jsRules": {},
+    "rules": {
+        "max-line-length": { "options": [80] },
+        "ter-indent": [true, 4],
+        "no-consecutive-blank-lines": [true, 2],
+        "trailing-comma": [
+            true, { "multiline": "never", "singleline": "never" }
+        ],
+        "interface-name": false,
+        "object-literal-sort-keys": false,
+        "no-console": false,
+        "ordered-imports": false,
+        "function-name": false,
+        "variable-name": false,
+        "import-name": false,
+        "no-null-keyword": true
+    },
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": "**/*.json"
+    }
+}
