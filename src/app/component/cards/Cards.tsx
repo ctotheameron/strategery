@@ -42,6 +42,7 @@ export class Cards extends React.Component<Props, State> {
                     <label>
                         Number:
                         <input
+                            id="number-input"
                             onChange={this.handleNumberChange}
                             type="number"
                             value={String(this.state.number)}
@@ -52,6 +53,7 @@ export class Cards extends React.Component<Props, State> {
                     <label>
                         Decks:
                         <input
+                            id="decks-input"
                             onChange={this.handleDecksChange}
                             type="number"
                             value={String(this.state.decks)}
@@ -62,14 +64,22 @@ export class Cards extends React.Component<Props, State> {
                     <button disabled={isLoading} type="submit">Draw</button>
                 </form>
                 <h3>Result:</h3>
-                <Result draw={current} isLoading={isLoading} error={error} />
+                    <span id="draw-result">
+                        <Result
+                            draw={current}
+                            isLoading={isLoading}
+                            error={error}
+                        />
+                    </span>
                 <h3>History:</h3>
-                {history.map((draw, idx) => (
-                    <div key={idx}>
-                        <Result draw={draw} />
-                        {idx + 1 !== history.length && <br />}
-                    </div>
-                ))}
+                <span id="draw-history">
+                    {history.map((draw, idx) => (
+                        <span key={idx}>
+                            <Result draw={draw} />
+                            {idx + 1 !== history.length && <br />}
+                        </span>
+                    ))}
+                </span>
             </>
         );
     }

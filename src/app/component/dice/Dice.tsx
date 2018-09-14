@@ -77,14 +77,14 @@ export class Dice extends React.Component<Props, State> {
                         />
                     </span>
                 <h3>History:</h3>
-                <div id="roll-history">
+                <span id="roll-history">
                     {history.map((roll, idx) => (
                         <span key={idx}>
                             <Result roll={roll} />
                             {idx + 1 !== history.length && <br />}
                         </span>
                     ))}
-                </div>
+                </span>
             </>
         );
     }
