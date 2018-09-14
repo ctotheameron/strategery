@@ -8,6 +8,7 @@ phases:
     commands:
       - yarn lint
       - yarn test
+      - yarn integration
 cache:
     paths:
       - 'node_modules'
