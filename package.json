@@ -10,6 +10,7 @@
     "lint": "npx npm-run-all -p lint:server lint:app lint:shared lint:integration",
     "pretest": "npx check-engines",
     "test": "jest --config=jest.config.json",
+    "test:coverage": "npx npm-run-all -p 'test:app -- --coverage' 'test:server -- --coverage' 'test:shared -- --coverage'",
     "integration": "npx npm-run-all -s integration:server integration:app",
     "package": "webpack --config webpack.config.ts",
     "prepackage": "npx check-engines",
