@@ -2,11 +2,11 @@ coverage:
   status:
     project:
       default: off
-      frontend:
+      app:
         flags: app
-      backend:
+      server:
         flags: server
-      api:
+      shared:
         flags: shared
 
 flags:
