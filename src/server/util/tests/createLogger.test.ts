@@ -1,7 +1,7 @@
 import { createLogger as bunyanCreate } from 'bunyan';
+import { Writable } from 'stream';
 
 import createLogger from '../createLogger';
-import { Writable } from 'stream';
 
 
 let mockStream: Writable;

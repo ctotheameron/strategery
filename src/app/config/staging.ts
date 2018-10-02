@@ -1,7 +1,7 @@
-import { Config, Stage } from './types';
+import { ConfigOptions, Stage } from './types';
 
 
-const stagingConfig: Config = {
+const stagingConfig: ConfigOptions = {
     stage: Stage.Staging
 };
 

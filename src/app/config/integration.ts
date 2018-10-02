@@ -1,8 +1,8 @@
-import { Config } from './types';
 import stagingConfig from './staging';
+import { ConfigOptions } from './types';
 
 
-const integrationConfig: Config = {
+const integrationConfig: ConfigOptions = {
     ...stagingConfig
 };
 

@@ -1,4 +1,8 @@
+import { reporter } from 'io-ts-reporters';
 import * as Router from 'koa-router';
+
+import { CardsDraw, CardsDrawRequestIO } from '../../shared/types/cards';
+
 import { shuffle } from '../service/cards';
 
 
@@ -6,16 +10,18 @@ const router = new Router({ prefix: '/cards' });
 
 
 router.post('draw', '/draw', async (ctx) => {
-    const body = ctx.request.body as { number: number, decks: number };
-    const { number, decks } = body;
+    const body = CardsDrawRequestIO.decode(ctx.request.body);
 
-    if (number < 1 || decks < 1) {
-        ctx.throw(400, 'decks and number must be > 0');
-        return;
-    }
+    const request = body.getOrElseL(() => (
+        ctx.throw(400, reporter(body).join('\n'))
+    ));
 
+    if (!request) return;
+
+    const { decks, number } = request;
     const cards = await shuffle(decks);
-    ctx.body = { request: body, cards: cards.splice(0, number) };
+    const response: CardsDraw = { request, cards: cards.splice(0, number) };
+    ctx.body = response;
 });
 
 

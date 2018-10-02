@@ -1,6 +1,6 @@
-import { makeRemoteDraw } from '../thunks';
-import { drawSuccess, drawError } from '../actions';
+import { drawError, drawSuccess } from '../actions';
 import { draw } from '../service';
+import { makeRemoteDraw } from '../thunks';
 
 
 jest.mock('../service', () => ({ draw: jest.fn() }));

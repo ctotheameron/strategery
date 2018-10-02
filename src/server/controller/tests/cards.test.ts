@@ -1,5 +1,5 @@
-import cardsRouter from '../cards';
 import { shuffle } from '../../service/cards';
+import cardsRouter from '../cards';
 
 
 jest.mock('../../service/cards', () => ({ shuffle: jest.fn() }));

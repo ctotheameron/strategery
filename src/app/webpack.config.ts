@@ -8,8 +8,10 @@ process.env.NODE_CONFIG_STRICT_MODE = 'true';
 
 const config = importFresh('config');
 
-import { Configuration, DefinePlugin } from 'webpack';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+
+import { Configuration, DefinePlugin } from 'webpack';
 
 
 const webpackConfig: Configuration = {
@@ -52,7 +54,12 @@ const webpackConfig: Configuration = {
     },
 
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json']
+        extensions: ['.ts', '.tsx', '.js', '.json'],
+        plugins: [
+            new TsconfigPathsPlugin({
+                configFile: resolve(join(__dirname), 'tsconfig.json')
+            })
+        ]
     },
 
     plugins: [

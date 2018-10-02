@@ -1,11 +1,15 @@
 import * as React from 'react';
+
 import { shallow } from 'enzyme';
+
+import TextField from '@material-ui/core/TextField';
 
 import { ApplicationState } from '../../../store';
 import { drawRequest } from '../../../store/cards/actions';
 
-import { Cards, Props, mapStateToProps, mapDispatchToProps } from '../Cards';
 import Result from '../Result';
+
+import { Cards, Props, mapDispatchToProps, mapStateToProps } from '../Cards';
 
 
 beforeEach(jest.clearAllMocks);
@@ -13,9 +17,10 @@ beforeEach(jest.clearAllMocks);
 
 describe('<Cards />', () => {
     const defaultProps: Props = {
+        classes: { root: '', resultLabel: '' },
+        onFormSubmit: jest.fn(),
         isLoading: false,
-        history: [],
-        onSubmit: jest.fn()
+        history: []
     };
 
 
@@ -33,7 +38,7 @@ describe('<Cards />', () => {
 
     test('should update state when number input changes', () => {
         const cards = shallow(<Cards {...defaultProps} />);
-        const numberInput = cards.find('input').at(0);
+        const numberInput = cards.find(TextField).at(0);
 
         const value = 2;
         numberInput.simulate('change', { currentTarget: { value } });
@@ -43,7 +48,7 @@ describe('<Cards />', () => {
 
     test('should update state when decks input changes', () => {
         const cards = shallow(<Cards {...defaultProps} />);
-        const decksInput = cards.find('input').at(1);
+        const decksInput = cards.find(TextField).at(1);
 
         const value = 2;
         decksInput.simulate('change', { currentTarget: { value } });
@@ -51,13 +56,13 @@ describe('<Cards />', () => {
     });
 
 
-    test('should call onSubmit when form is submitted', () => {
+    test('should call onFormSubmit when form is submitted', () => {
         const cards = shallow(<Cards {...defaultProps} />);
         const form = cards.find('form');
         const preventDefault = jest.fn();
         form.simulate('submit', { preventDefault });
         expect(preventDefault).toBeCalled();
-        expect(defaultProps.onSubmit).toBeCalledWith(cards.state());
+        expect(defaultProps.onFormSubmit).toBeCalledWith(cards.state());
     });
 
 
@@ -112,12 +117,12 @@ describe('mapStateToProps', () => {
 
 
 describe('mapDispatchToProps', () => {
-    test('should expose onSubmit function', () => {
+    test('should expose onFormSubmit function', () => {
         const dispatch = jest.fn();
-        const { onSubmit } = mapDispatchToProps(dispatch);
+        const { onFormSubmit } = mapDispatchToProps(dispatch);
 
         const drawParams = { number: 1, decks: 2 };
-        onSubmit(drawParams);
+        onFormSubmit(drawParams);
 
         expect(dispatch).toBeCalledWith(drawRequest(drawParams));
     });

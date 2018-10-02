@@ -2,5 +2,8 @@
     "baseUrl": "http://localhost:4000/",
     "viewportHeight": 1024,
     "viewportWidth": 1366,
-    "supportFile": "cypress/support/index.ts"
+    "supportFile": "integration/app/support/index.ts",
+    "fixturesFolder": "integration/app/fixtures",
+    "integrationFolder": "integration/app/integration",
+    "pluginsFile": "integration/app/plugins"
 }

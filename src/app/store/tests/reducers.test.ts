@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import { diceReducer } from '../dice/reducer';
 import { cardsReducer } from '../cards/reducer';
+import { diceReducer } from '../dice/reducer';
 import reducers from '../reducers';
 
 

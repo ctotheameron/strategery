@@ -1,24 +1,49 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+import classNames from 'classnames';
+
+import { StandardProps } from '@material-ui/core';
+import { createStyles, withStyles } from '@material-ui/core/styles';
+import { ClassNameMap } from '@material-ui/core/styles/withStyles';
+
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+
 import {
-    CardsDrawRequest, CardsDispatch, CardsState
+    CardsDispatch, CardsDrawRequest, CardsState
 } from '../../store/cards/types';
 
 import { ApplicationState } from '../../store';
-import Result from './Result';
 import { drawRequest } from '../../store/cards/actions';
+import Result from './Result';
 
 
+type ClassKey = 'root' | 'resultLabel';
 type State = CardsDrawRequest;
 type StateProps = CardsState;
 
 interface DispatchProps {
-    onSubmit: (drawParams: State) => void;
+    onFormSubmit: (drawParams: State) => void;
 }
 
 
-export type Props = DispatchProps & StateProps;
+export interface Props extends StandardProps<
+    React.HTMLAttributes<HTMLDivElement>,
+    ClassKey
+>, DispatchProps, StateProps {
+    // TODO: See if there is a better way to force classes to be defined
+    classes: ClassNameMap<ClassKey>;
+}
+
+
+const styles = createStyles({
+    root: {},
+    resultLabel: {
+        paddingTop: 16
+    }
+});
 
 
 export class Cards extends React.Component<Props, State> {
@@ -33,45 +58,64 @@ export class Cards extends React.Component<Props, State> {
 
 
     public render() {
-        const { isLoading, current, history, error } = this.props;
+        const {
+            classes, className, isLoading, current, history, error, ...other
+        } = this.props;
 
         return (
-            <>
-                <h2>Draw Some Cards</h2>
+            <div className={classNames(classes.root, className)} {...other}>
+                <Typography variant="title">Draw Some Cards</Typography>
                 <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Number:
-                        <input
-                            id="number-input"
-                            onChange={this.handleNumberChange}
-                            type="number"
-                            value={String(this.state.number)}
-                            min={0}
-                        />
-                    </label>
+                    <TextField
+                        id="number-input"
+                        label="Number"
+                        value={String(this.state.number)}
+                        onChange={this.handleNumberChange}
+                        type="number"
+                        inputProps={{ min: '0' }}
+                        variant="filled"
+                        margin="normal"
+                    />
                     <br />
-                    <label>
-                        Decks:
-                        <input
-                            id="decks-input"
-                            onChange={this.handleDecksChange}
-                            type="number"
-                            value={String(this.state.decks)}
-                            min={0}
-                        />
-                    </label>
+                    <TextField
+                        id="decks-input"
+                        label="Decks"
+                        value={String(this.state.decks)}
+                        onChange={this.handleDecksChange}
+                        type="number"
+                        inputProps={{ min: '0' }}
+                        variant="filled"
+                        margin="normal"
+                    />
                     <br />
-                    <button disabled={isLoading} type="submit">Draw</button>
+                    <Button
+                        color="primary"
+                        type="submit"
+                        variant="contained"
+                        disabled={isLoading}
+                    >
+                        Draw
+                    </Button>
                 </form>
-                <h3>Result:</h3>
-                    <span id="draw-result">
-                        <Result
-                            draw={current}
-                            isLoading={isLoading}
-                            error={error}
-                        />
-                    </span>
-                <h3>History:</h3>
+                <Typography
+                    className={classes.resultLabel}
+                    variant="subheading"
+                >
+                    Result:
+                </Typography>
+                <span id="draw-result">
+                    <Result
+                        draw={current}
+                        isLoading={isLoading}
+                        error={error}
+                    />
+                </span>
+                <Typography
+                    className={classes.resultLabel}
+                    variant="subheading"
+                >
+                    History:
+                </Typography>
                 <span id="draw-history">
                     {history.map((draw, idx) => (
                         <span key={idx}>
@@ -80,28 +124,30 @@ export class Cards extends React.Component<Props, State> {
                         </span>
                     ))}
                 </span>
-            </>
+            </div>
         );
     }
 
 
     private handleDecksChange = (
-        event: React.FormEvent<HTMLInputElement>
+        event: React.ChangeEvent<HTMLInputElement>
     ): void => {
         this.setState({ decks: Number(event.currentTarget.value) });
     }
 
 
     private handleNumberChange = (
-        event: React.FormEvent<HTMLInputElement>
+        event: React.ChangeEvent<HTMLInputElement>
     ): void => {
         this.setState({ number: Number(event.currentTarget.value) });
     }
 
 
-    private handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    private handleSubmit = (
+        event: React.ChangeEvent<HTMLFormElement>
+    ): void => {
         event.preventDefault();
-        this.props.onSubmit(this.state);
+        this.props.onFormSubmit(this.state);
     }
 }
 
@@ -113,9 +159,11 @@ export function mapStateToProps({ cards }: ApplicationState): StateProps {
 
 export function mapDispatchToProps(dispatch: CardsDispatch): DispatchProps {
     return {
-        onSubmit: (drawParams: State) => dispatch(drawRequest(drawParams))
+        onFormSubmit: (drawParams: State) => dispatch(drawRequest(drawParams))
     };
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cards);
+export default connect(
+    mapStateToProps, mapDispatchToProps
+)(withStyles(styles)(Cards));

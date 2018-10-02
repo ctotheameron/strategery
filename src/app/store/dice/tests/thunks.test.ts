@@ -1,6 +1,6 @@
-import { makeRemoteRoll } from '../thunks';
-import { rollSuccess, rollError } from '../actions';
+import { rollError, rollSuccess } from '../actions';
 import { roll } from '../service';
+import { makeRemoteRoll } from '../thunks';
 
 
 jest.mock('../service', () => ({ roll: jest.fn() }));

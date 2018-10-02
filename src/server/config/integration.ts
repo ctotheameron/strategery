@@ -1,5 +1,5 @@
-import { Config } from './types';
 import stagingConfig from './staging';
+import { Config } from './types';
 
 
 const integrationConfig: Config = {

@@ -1,5 +1,5 @@
-import { DiceActionType, DiceMiddleware } from './types';
 import { makeRemoteRoll } from './thunks';
+import { DiceActionType, DiceMiddleware } from './types';
 
 
 const middleware: DiceMiddleware = ({ dispatch }) => next => (action) => {

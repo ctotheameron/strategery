@@ -1,7 +1,7 @@
-import { Config, Stage } from './types';
+import { ConfigOptions, Stage } from './types';
 
 
-const developmentConfig: Config = {
+const developmentConfig: ConfigOptions = {
     stage: Stage.Development,
     baseURL: 'http://localhost:4000/api'
 };

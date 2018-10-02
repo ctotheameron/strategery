@@ -14,16 +14,16 @@ WORKDIR $APP
 
 # Install app dependencies
 COPY package.json $APP/
-COPY yarn.lock $APP/
+COPY package-lock.json $APP/
 COPY src/app/types $APP/src/app/types
 COPY src/server/types $APP/src/server/types
-RUN yarn
+RUN npm ci
 
 # Bundle app source
 COPY . $APP
 
 EXPOSE 8080
-RUN NODE_ENV=${profile} yarn build
+RUN NODE_ENV=${profile} npm run package
 WORKDIR $APP/dist
 
 ENTRYPOINT ["node", "server.js"]

@@ -17,15 +17,17 @@
         "interface-name": false,
         "object-literal-sort-keys": false,
         "no-console": false,
-        "ordered-imports": false,
-        "function-name": false,
         "variable-name": false,
+        "jsx-boolean-value": [true, "never"],
         "jsx-no-multiline-js": false,
         "import-name": false,
+        "ordered-imports": [
+            true, { "named-imports-order": "lowercase-last" }
+        ],
         "no-null-keyword": true
     },
     "rulesDirectory": [],
     "linterOptions": {
-        "exclude": "**/*.json"
+        "exclude": ["**/*.json"]
     }
 }

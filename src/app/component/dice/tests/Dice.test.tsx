@@ -1,11 +1,15 @@
 import * as React from 'react';
+
 import { shallow } from 'enzyme';
+
+import TextField from '@material-ui/core/TextField';
 
 import { ApplicationState } from '../../../store';
 import { rollRequest } from '../../../store/dice/actions';
 
-import { Dice, Props, mapStateToProps, mapDispatchToProps } from '../Dice';
 import Result from '../Result';
+
+import { Dice, Props, mapDispatchToProps, mapStateToProps } from '../Dice';
 
 
 beforeEach(jest.clearAllMocks);
@@ -13,9 +17,10 @@ beforeEach(jest.clearAllMocks);
 
 describe('<Dice />', () => {
     const defaultProps: Props = {
+        classes: { root: '', resultLabel: '' },
+        onFormSubmit: jest.fn(),
         isLoading: false,
-        history: [],
-        onSubmit: jest.fn()
+        history: []
     };
 
 
@@ -29,7 +34,7 @@ describe('<Dice />', () => {
 
     test('should update state when number input changes', () => {
         const dice = shallow(<Dice {...defaultProps} />);
-        const numberInput = dice.find('input').at(0);
+        const numberInput = dice.find(TextField).at(0);
 
         const value = 2;
         numberInput.simulate('change', { currentTarget: { value } });
@@ -39,7 +44,7 @@ describe('<Dice />', () => {
 
     test('should update state when kind select changes', () => {
         const dice = shallow(<Dice {...defaultProps} />);
-        const kindInput = dice.find('select').at(0);
+        const kindInput = dice.find(TextField).at(1);
 
         const value = 2;
         kindInput.simulate('change', { currentTarget: { value } });
@@ -47,13 +52,13 @@ describe('<Dice />', () => {
     });
 
 
-    test('should call onSubmit when form is submitted', () => {
+    test('should call onFormSubmit when form is submitted', () => {
         const dice = shallow(<Dice {...defaultProps} />);
         const form = dice.find('form');
         const preventDefault = jest.fn();
         form.simulate('submit', { preventDefault });
         expect(preventDefault).toBeCalled();
-        expect(defaultProps.onSubmit).toBeCalledWith(dice.state());
+        expect(defaultProps.onFormSubmit).toBeCalledWith(dice.state());
     });
 
 
@@ -108,12 +113,12 @@ describe('mapStateToProps', () => {
 
 
 describe('mapDispatchToProps', () => {
-    test('should expose onSubmit function', () => {
+    test('should expose onFormSubmit function', () => {
         const dispatch = jest.fn();
-        const { onSubmit } = mapDispatchToProps(dispatch);
+        const { onFormSubmit } = mapDispatchToProps(dispatch);
 
         const rollParams = { number: 1, sides: 2 };
-        onSubmit(rollParams);
+        onFormSubmit(rollParams);
 
         expect(dispatch).toBeCalledWith(rollRequest(rollParams));
     });

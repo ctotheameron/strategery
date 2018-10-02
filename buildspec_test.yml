@@ -3,12 +3,12 @@ version: 0.2
 phases:
   install:
     commands:
-      - yarn
+      - npm ci
   build:
     commands:
-      - yarn lint
-      - yarn test
-      - yarn integration
+      - npm run lint
+      - npm test
+      - npm run integration
 cache:
     paths:
       - 'node_modules'

@@ -1,5 +1,5 @@
-import diceRouter from '../dice';
 import { roll } from '../../service/dice';
+import diceRouter from '../dice';
 
 
 jest.mock('../../service/dice', () => ({ roll: jest.fn() }));
@@ -55,8 +55,10 @@ describe('POST /dice/roll', () => {
         const body = { number: 0, sides: 2 };
         const mockThrow = jest.fn();
         const ctx = { request: { body }, body: undefined, throw: mockThrow };
+
         await controller(ctx);
         expect(ctx.throw).toBeCalledWith(400, expect.any(String));
+        expect(ctx.body).toBe(undefined);
     });
 
 
@@ -64,7 +66,9 @@ describe('POST /dice/roll', () => {
         const body = { number: 2, sides: 0 };
         const mockThrow = jest.fn();
         const ctx = { request: { body }, body: undefined, throw: mockThrow };
+
         await controller(ctx);
         expect(ctx.throw).toBeCalledWith(400, expect.any(String));
+        expect(ctx.body).toBe(undefined);
     });
 });

@@ -1,5 +1,5 @@
-import { shuffle } from '../cards';
 import { getCards, shuffleCards } from '../../api/fakeBackendCards';
+import { shuffle } from '../cards';
 
 
 jest.mock('../../api/fakeBackendCards', () => {

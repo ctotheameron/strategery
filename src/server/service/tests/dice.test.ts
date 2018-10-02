@@ -1,5 +1,5 @@
-import { roll } from '../dice';
 import { rollDie } from '../../api/fackeBackendDice';
+import { roll } from '../dice';
 
 
 jest.mock('../../api/fackeBackendDice', () => {

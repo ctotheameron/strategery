@@ -1,6 +1,7 @@
-import { DiceState, DiceAction } from '../types';
+import { rollError, rollRequest, rollSuccess } from '../actions';
+import { DiceAction, DiceState } from '../types';
+
 import { diceReducer } from '../reducer';
-import { rollRequest, rollSuccess, rollError } from '../actions';
 
 
 describe('CardsActionType.DRAW_REQUEST', () => {

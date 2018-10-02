@@ -1,12 +1,7 @@
 {
     "projects": [
-        "<rootDir>/src/server/jest.config.json",
-        "<rootDir>/src/app/jest.config.json"
-    ],
-    "collectCoverageFrom": [
-        "**/*.{ts,tsx}",
-        "!**/*.d.ts",
-        "!**/config/**",
-        "!**/webpack.*.ts"
+        "src/server/jest.config.json",
+        "src/app/jest.config.json",
+        "src/shared/jest.config.json"
     ]
 }
