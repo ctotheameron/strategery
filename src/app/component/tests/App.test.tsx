@@ -1,22 +1,18 @@
 import * as React from 'react';
-import { Link, Route } from 'react-router-dom';
+
 import { shallow } from 'enzyme';
 
-import Cards from '../cards/Cards';
-import Dice from '../dice/Dice';
+import Content from '../Content';
+import Footer from '../Footer';
+import Header from '../Header';
+
 import App from '../App';
 
 
-test('should have Links to cards and dice', () => {
-    const app = shallow(<App />);
-    expect(app.find(Link).at(0).children().text()).toBe('Cards');
-    expect(app.find(Link).at(1).children().text()).toBe('Dice');
-});
+test('should render Header, Content and Footer', () => {
+    const app = shallow(<App />).dive();
 
-
-test('should have Routes to cards and dice', () => {
-    const app = shallow(<App />);
-    const routes = app.find(Route);
-    expect(routes.at(0).props()).toMatchObject({ component: Cards });
-    expect(routes.at(1).props()).toMatchObject({ component: Dice });
+    expect(app.find(Header)).toHaveLength(1);
+    expect(app.find(Content)).toHaveLength(1);
+    expect(app.find(Footer)).toHaveLength(1);
 });

@@ -1,6 +1,6 @@
-import { Store, createStore, applyMiddleware } from 'redux';
-import reduxThunk from 'redux-thunk';
+import { Store, applyMiddleware, createStore } from 'redux';
 import reduxLogger from 'redux-logger';
+import reduxThunk from 'redux-thunk';
 
 import config, { Stage } from '../config';
 import middleware from './middleware';

@@ -1,24 +1,15 @@
+import { Dispatch, Middleware } from 'redux';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { ActionType } from 'typesafe-actions';
-import { Middleware, Dispatch } from 'redux';
-import { ThunkDispatch, ThunkAction } from 'redux-thunk';
 
-import * as actions from './actions';
+import * as DiceTypes from '../../../shared/types/dice';
+
 import { ApplicationState } from '..';
+import * as actions from './actions';
 
 
-// Request object for POST /dice/roll
-export interface DiceRollRequest {
-    sides: number;
-    number: number;
-}
-
-
-// Response object for POST /dice/roll
-export interface DiceRoll {
-    request: DiceRollRequest;
-    sum: number;
-    rolls: number[];
-}
+export type DiceRoll = DiceTypes.DiceRoll;
+export type DiceRollRequest = DiceTypes.DiceRollRequest;
 
 
 // Use `const enum`s for better autocompletion of action type names. These will

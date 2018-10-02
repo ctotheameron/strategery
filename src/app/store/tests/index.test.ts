@@ -1,7 +1,7 @@
-import { createStore, applyMiddleware, StoreEnhancer } from 'redux';
+import { StoreEnhancer, applyMiddleware, createStore } from 'redux';
 
-import reducers from '../reducers';
 import { configureStore } from '../';
+import reducers from '../reducers';
 
 
 type mockApplyMiddlewareType = (...args: string[]) => StoreEnhancer<any, {}>;

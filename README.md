@@ -20,14 +20,12 @@ nvm install
 
 ## Installation
 
-Clone the repo and install the depencies. We use `yarn` in the place of `npm`
-just because we like it more. To install yarn, see
-[here](https://yarnpkg.com/en/docs/install#mac-stable)
+Clone the repo and install the depencies
 
 ```bash
 git clone git@github.com:serviceslabs/koa-react-starter-service.git
 cd koa-react-starter-service
-yarn install
+npm install
 ```
 
 ## Features
@@ -66,11 +64,11 @@ Server
 
 ## Available Scripts
 
-### `yarn start`
+### `npm start`
 
 Runs both the app and server in development mode (see below).
 
-### `yarn start:app`
+### `npm run start:app`
 
 Runs the app in the development mode.
 Open <http://localhost:8080> to view it in the browser.
@@ -78,15 +76,15 @@ Open <http://localhost:8080> to view it in the browser.
 Hot and Live Reload are supported.
 You will also see any linter errors in the console.
 
-### `yarn start:server`
+### `npm run start:server`
 
 Runs the koa.js server in development mode listening on port 4000.
 
-### `yarn test`
+### `npm test`
 
 Launches the test runner in the interactive watch mode for both server and app.
 
-### `yarn run build`
+### `npm run package`
 
 Builds the app for production to the `dist` folder.
 It correctly bundles React in production mode and optimizes the build for the
@@ -94,5 +92,5 @@ best performance.
 
 The build is minified and the filenames include the hashes.
 
-> When running yarn build, NODE_ENV should be set to staging or production to
-trigger correct config compilation `NODE_ENV=staging yarn build`
+> When running npm run package, NODE_ENV should be set to staging or production
+to trigger correct config compilation `NODE_ENV=staging npm run package`

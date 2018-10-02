@@ -1,5 +1,5 @@
-import { roll } from './service';
 import { rollError, rollSuccess } from './actions';
+import { roll } from './service';
 import { DiceRollRequest, DiceThunkAction } from './types';
 
 

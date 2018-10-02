@@ -9,12 +9,11 @@
         "module": "commonjs",
         "target": "es6",
         "jsx": "react",
-        "lib": ["es2018", "dom"]
+        "lib": ["es2018", "dom"],
+        "skipLibCheck": true,
+        "baseUrl": "."
     },
     "include": [
         "**/*"
-    ],
-    "exclude": [
-        "node_modules"
     ]
 }

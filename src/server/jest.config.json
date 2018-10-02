@@ -11,5 +11,11 @@
     "testPathIgnorePatterns": [
         "./config/*",
         "./tests/setup.ts"
+    ],
+    "collectCoverageFrom": [
+        "**/*.{ts,tsx}",
+        "!**/*.d.ts",
+        "!**/config/**",
+        "!**/webpack.*.ts"
     ]
 }

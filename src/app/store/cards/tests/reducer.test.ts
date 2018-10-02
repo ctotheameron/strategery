@@ -1,6 +1,6 @@
-import { CardsState, CardsAction } from '../types';
+import { drawError, drawRequest, drawSuccess } from '../actions';
 import { cardsReducer } from '../reducer';
-import { drawRequest, drawSuccess, drawError } from '../actions';
+import { CardsAction, CardsState } from '../types';
 
 
 describe('CardsActionType.DRAW_REQUEST', () => {

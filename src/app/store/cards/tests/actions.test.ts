@@ -1,4 +1,4 @@
-import { drawRequest, drawSuccess, drawError } from '../actions';
+import { drawError, drawRequest, drawSuccess } from '../actions';
 import { CardsActionType } from '../types';
 
 

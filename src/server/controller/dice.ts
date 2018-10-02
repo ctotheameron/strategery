@@ -1,21 +1,27 @@
+import { reporter } from 'io-ts-reporters';
 import * as Router from 'koa-router';
+
+import { DiceRoll, DiceRollRequestIO } from '../../shared/types/dice';
+
 import { roll } from '../service/dice';
+
 
 const router = new Router({ prefix: '/dice' });
 
 
 router.post('roll', '/roll', async (ctx) => {
-    const body = ctx.request.body as { number: number, sides: number };
-    const { number, sides } = body;
+    const body = DiceRollRequestIO.decode(ctx.request.body);
 
-    if (number < 1 || sides < 1) {
-        ctx.throw(400, 'sides and number must be > 0');
-        return;
-    }
+    const request = body.getOrElseL(() => (
+        ctx.throw(400, reporter(body).join('\n'))
+    ));
 
-    const rolls: number[] = await roll({ sides, number });
+    if (!request) return;
+
+    const rolls: number[] = await roll(request);
     const sum = rolls.reduce((acc, val) => acc + val, 0);
-    ctx.body = { rolls, sum, request: body };
+    const response: DiceRoll = { rolls, sum, request };
+    ctx.body = response;
 });
 
 

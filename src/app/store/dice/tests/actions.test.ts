@@ -1,4 +1,4 @@
-import { rollRequest, rollSuccess, rollError } from '../actions';
+import { rollError, rollRequest, rollSuccess } from '../actions';
 import { DiceActionType } from '../types';
 
 

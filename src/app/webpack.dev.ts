@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { join, resolve } from 'path';
 
 process.env.NODE_CONFIG_DIR = resolve(__dirname, 'config');
 process.env.NODE_CONFIG_STRICT_MODE = 'true';
@@ -7,6 +7,7 @@ import * as config from 'config';
 
 import forkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import { Configuration, DefinePlugin, NamedModulesPlugin } from 'webpack';
 
 
@@ -52,7 +53,12 @@ const webpackConfig: Configuration = {
     },
 
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json']
+        extensions: ['.ts', '.tsx', '.js', '.json'],
+        plugins: [
+            new TsconfigPathsPlugin({
+                configFile: resolve(join(__dirname), 'tsconfig.json')
+            })
+        ]
     },
 
     plugins: [

@@ -1,23 +1,15 @@
+import { Dispatch, Middleware } from 'redux';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { ActionType } from 'typesafe-actions';
-import { Middleware, Dispatch } from 'redux';
-import { ThunkDispatch, ThunkAction } from 'redux-thunk';
 
-import * as actions from './actions';
+import * as CardsTypes from '../../../shared/types/cards';
+
 import { ApplicationState } from '..';
+import * as actions from './actions';
 
 
-// Request object for POST /cards/roll
-export interface CardsDrawRequest {
-    decks: number;
-    number: number;
-}
-
-
-// Response object for POST /cards
-export interface CardsDraw {
-    request: CardsDrawRequest;
-    cards: string[];
-}
+export type CardsDraw = CardsTypes.CardsDraw;
+export type CardsDrawRequest = CardsTypes.CardsDrawRequest;
 
 
 // Use `const enum`s for better autocompletion of action type names. These will

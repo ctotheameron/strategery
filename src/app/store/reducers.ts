@@ -2,8 +2,9 @@ import { combineReducers } from 'redux';
 
 import { cardsReducer } from './cards/reducer';
 import { diceReducer } from './dice/reducer';
-import { DiceState } from './dice/types';
+
 import { CardsState } from './cards/types';
+import { DiceState } from './dice/types';
 
 
 // The top-level state object

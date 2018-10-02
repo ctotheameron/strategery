@@ -3,11 +3,11 @@ version: 0.2
 phases:
   install:
     commands:
-      - yarn
+      - npm ci
   build:
     commands:
-      - yarn lint
-      - yarn test --coverage
+      - npm run lint
+      - npm test -- --coverage
   post_build:
     commands:
       - curl -s https://codecov.io/bash | bash -s - -t $CODECOV_TOKEN

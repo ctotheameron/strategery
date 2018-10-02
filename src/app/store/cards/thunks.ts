@@ -1,5 +1,5 @@
-import { draw } from './service';
 import { drawError, drawSuccess } from './actions';
+import { draw } from './service';
 import { CardsDrawRequest, CardsThunkAction } from './types';
 
 

@@ -1,7 +1,7 @@
-import { Config, Stage } from './types';
+import { ConfigOptions, Stage } from './types';
 
 
-const testConfig: Config = {
+const testConfig: ConfigOptions = {
     stage: Stage.Test,
     baseURL: 'testApiUrl'
 };

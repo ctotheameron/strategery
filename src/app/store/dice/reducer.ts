@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { DiceActionType, DiceState, DiceAction } from './types';
+import { DiceAction, DiceActionType, DiceState } from './types';
 
 
 // Type-safe initialState!

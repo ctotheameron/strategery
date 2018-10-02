@@ -1,5 +1,5 @@
-import { diceMiddleware } from '../dice/middleware';
 import { cardsMiddleware } from '../cards/middleware';
+import { diceMiddleware } from '../dice/middleware';
 import middleware from '../middleware';
 
 
