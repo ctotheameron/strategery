@@ -8,7 +8,6 @@ process.env.NODE_CONFIG_STRICT_MODE = 'true';
 
 const config = importFresh('config');
 
-import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import { Configuration, DefinePlugin } from 'webpack';
 import webpackNodeExternals = require('webpack-node-externals');
 
@@ -36,12 +35,7 @@ const webpackConfig: Configuration = {
     },
 
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json'],
-        plugins: [
-            new TsconfigPathsPlugin({
-                configFile: resolve(join(__dirname), 'tsconfig.json')
-            })
-        ]
+        extensions: ['.ts', '.tsx', '.js', '.json']
     },
 
     externals: [webpackNodeExternals()],
