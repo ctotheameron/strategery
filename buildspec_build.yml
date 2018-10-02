@@ -11,7 +11,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build --build-arg profile=$STAGE -t $REPOSITORY_URI:latest .
+      - docker build --build-arg profile=$STAGE npmToken=$NPM_TOKEN -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:

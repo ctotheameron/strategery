@@ -4,10 +4,13 @@ RUN apk update && apk upgrade && \
     apk add --no-cache bash git openssh
 
 ENV APP /koa-react-starter-service
-ENV NPM_TOKEN $NPM_TOKEN
 
 #pass like --build-arg profile=production to build other profile
 ARG profile=staging
+
+ARG npmToken
+ENV NPM_TOKEN=$npmToken
+
 ENV PORT=8080
 
 RUN mkdir $APP
