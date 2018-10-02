@@ -56,7 +56,7 @@ describe('POST /cards/draw', () => {
         const mockThrow = jest.fn();
         const ctx = { request: { body }, body: undefined, throw: mockThrow };
         await controller(ctx);
-        expect(ctx.throw).toBeCalledWith(400, expect.any(String));
+        expect(ctx.throw).toBeCalledWith(400, expect.any(Error));
     });
 
 
@@ -65,6 +65,6 @@ describe('POST /cards/draw', () => {
         const mockThrow = jest.fn();
         const ctx = { request: { body }, body: undefined, throw: mockThrow };
         await controller(ctx);
-        expect(ctx.throw).toBeCalledWith(400, expect.any(String));
+        expect(ctx.throw).toBeCalledWith(400, expect.any(Error));
     });
 });

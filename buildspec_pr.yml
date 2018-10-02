@@ -7,10 +7,15 @@ phases:
   build:
     commands:
       - npm run lint
-      - npm test -- --coverage
-  post_build:
-    commands:
-      - curl -s https://codecov.io/bash | bash -s - -t $CODECOV_TOKEN
+
+      - npm run test:app -- --coverage
+      - bash <(curl -s https://codecov.io/bash) -c -F app -s coverage/app
+
+      - npm run test:server -- --coverage
+      - bash <(curl -s https://codecov.io/bash) -c -F server -s coverage/server
+
+      - npm run test:shared -- --coverage
+      - bash <(curl -s https://codecov.io/bash) -c -F shared -s coverage/shared
 cache:
     paths:
       - 'node_modules'

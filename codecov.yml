@@ -1,0 +1,22 @@
+coverage:
+  status:
+    project:
+      default: off
+      frontend:
+        flags: app
+      backend:
+        flags: server
+      api:
+        flags: shared
+
+flags:
+  # filter the folder(s) you wish to measure by that flag
+  app:
+    paths:
+      - src/app/
+  server:
+    paths:
+      - src/server/
+  shared:
+    paths:
+      - src/shared/
