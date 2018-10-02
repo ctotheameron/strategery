@@ -19,6 +19,7 @@ WORKDIR $APP
 # Install app dependencies
 COPY package.json $APP/
 COPY package-lock.json $APP/
+COPY .npmrc $APP/
 COPY src/app/types $APP/src/app/types
 COPY src/server/types $APP/src/server/types
 RUN npm ci
