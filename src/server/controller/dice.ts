@@ -1,7 +1,10 @@
-import { reporter } from 'io-ts-reporters';
 import * as Router from 'koa-router';
 
-import { DiceRoll, DiceRollRequestIO } from '../../shared/types/dice';
+import {
+    DiceRoll, DiceRollRequest, DiceRollRequestIO
+} from '../../shared/types/dice';
+
+import { decodeAsync } from '../../shared/types/util';
 
 import { roll } from '../service/dice';
 
@@ -10,13 +13,14 @@ const router = new Router({ prefix: '/dice' });
 
 
 router.post('roll', '/roll', async (ctx) => {
-    const body = DiceRollRequestIO.decode(ctx.request.body);
+    let request: DiceRollRequest;
 
-    const request = body.getOrElseL(() => (
-        ctx.throw(400, reporter(body).join('\n'))
-    ));
-
-    if (!request) return;
+    try {
+        request = await decodeAsync(DiceRollRequestIO, ctx.request.body);
+    } catch (err) {
+        ctx.throw(400, err);
+        return;
+    }
 
     const rolls: number[] = await roll(request);
     const sum = rolls.reduce((acc, val) => acc + val, 0);

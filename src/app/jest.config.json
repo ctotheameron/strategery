@@ -1,13 +1,8 @@
 {
-    "rootDir": "./",
-    "transform": { "^.+\\.tsx?$": "ts-jest" },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
-    "moduleFileExtensions": [
-        "ts", "tsx", "js", "jsx", "json", "node"
-    ],
-    "setupFiles": [
-        "./tests/setup.ts"
-    ],
+    "displayName": "app",
+    "preset": "ts-jest",
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+    "setupFiles": ["./tests/setup.ts"],
     "testPathIgnorePatterns": [
         "./config/*",
         "./tests/setup.ts"
@@ -17,5 +12,6 @@
         "!**/*.d.ts",
         "!**/config/**",
         "!**/webpack.*.ts"
-    ]
+    ],
+    "coverageDirectory": "../../coverage/app"
 }

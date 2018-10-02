@@ -57,7 +57,7 @@ describe('POST /dice/roll', () => {
         const ctx = { request: { body }, body: undefined, throw: mockThrow };
 
         await controller(ctx);
-        expect(ctx.throw).toBeCalledWith(400, expect.any(String));
+        expect(ctx.throw).toBeCalledWith(400, expect.any(Error));
         expect(ctx.body).toBe(undefined);
     });
 
@@ -68,7 +68,7 @@ describe('POST /dice/roll', () => {
         const ctx = { request: { body }, body: undefined, throw: mockThrow };
 
         await controller(ctx);
-        expect(ctx.throw).toBeCalledWith(400, expect.any(String));
+        expect(ctx.throw).toBeCalledWith(400, expect.any(Error));
         expect(ctx.body).toBe(undefined);
     });
 });
