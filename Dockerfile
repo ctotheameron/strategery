@@ -22,7 +22,7 @@ COPY package-lock.json $APP/
 COPY .npmrc $APP/
 COPY src/app/types $APP/src/app/types
 COPY src/server/types $APP/src/server/types
-RUN npm ci
+RUN npm install --no-optional
 
 # Bundle app source
 COPY . $APP
