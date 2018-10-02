@@ -9,13 +9,13 @@ phases:
       - npm run lint
 
       - npm run test:app -- --coverage
-      - bash <(curl -s https://codecov.io/bash) -c -F app -s coverage/app
+      - curl -s https://codecov.io/bash | bash -s - -c -F app -s coverage/app -t $CODECOV_TOKEN
 
       - npm run test:server -- --coverage
-      - bash <(curl -s https://codecov.io/bash) -c -F server -s coverage/server
+      - curl -s https://codecov.io/bash | bash -s - -c -F server -s coverage/server -t $CODECOV_TOKEN
 
       - npm run test:shared -- --coverage
-      - bash <(curl -s https://codecov.io/bash) -c -F shared -s coverage/shared
+      - curl -s https://codecov.io/bash | bash -s - -c -F shared -s coverage/shared -t $CODECOV_TOKEN
 cache:
     paths:
       - 'node_modules'
