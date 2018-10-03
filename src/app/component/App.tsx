@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader';
 
 import classNames from 'classnames';
 
-import { StandardProps } from '@material-ui/core';
+import { StandardProps, Theme } from '@material-ui/core';
 import { createStyles, withStyles } from '@material-ui/core/styles';
 import { ClassNameMap } from '@material-ui/core/styles/withStyles';
 
@@ -26,31 +26,49 @@ interface Props extends StandardProps<
 }
 
 
-const styles = () => {
+const styles = ({ palette }: Theme) => {
     const footerHeight = '3.75rem';
+    const defaultMaxW = '50rem';
+
+    const safeW = 'calc('
+                + '100% - env(safe-area-inset-right) '
+                + '- env(safe-area-inset-left))';
+
+    const safeFooterPadding = 'env(safe-area-inset-bottom)';
+    const safeFooterH = `calc(${footerHeight} + ${safeFooterPadding})`;
 
     return createStyles({
-        '@global': { 'html, body, div#app': { height: '100%' } },
+        '@global': {
+            'html, body, div#app': { height: '100%' },
+            body: { backgroundColor: palette.primary.main }
+        },
         root: {
             minHeight: '100%',
-            position: 'relative'
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column'
         },
         header: { alignItems: 'center' },
         content: {
-            paddingBottom: footerHeight,
+            flexGrow: 1,
+            paddingBottom: safeFooterH,
             justifyContent: 'center'
         },
         footer: {
             position: 'absolute',
             bottom: 0,
             width: '100%',
-            height: footerHeight,
+            height: safeFooterH,
             backgroundColor: colors.grey[500],
-            justifyContent: 'center'
+            justifyContent: 'center',
+            paddingBottom: safeFooterPadding
         },
         constrainedWidth: {
             width: '100%',
-            maxWidth: '50rem'
+            maxWidth: defaultMaxW,
+            '@supports(max-width: max(0px))': {
+                maxWidth: `min(${defaultMaxW}, ${safeW})`
+            }
         }
     });
 };
