@@ -39,8 +39,11 @@ const styles = ({ palette }: Theme) => {
 
     return createStyles({
         '@global': {
-            'html, body, div#app': { height: '100%' },
-            body: { backgroundColor: palette.primary.main }
+            'html, body, div#app': {
+                height: '100%',
+                backgroundColor: palette.background.default,
+                WebkitTapHighlightColor: 'transparent'
+            }
         },
         root: {
             minHeight: '100%',
@@ -51,18 +54,24 @@ const styles = ({ palette }: Theme) => {
         header: { alignItems: 'center' },
         content: {
             flexGrow: 1,
-            justifyContent: 'center'
+            justifyContent: 'center',
+            '@supports not (min-height: calc(100% - 1em))': {
+                paddingBottom: footerHeight
+            }
         },
         footer: {
-            minHeight: safeFooterH,
+            minHeight: footerHeight,
             backgroundColor: colors.grey[500],
             justifyContent: 'center',
-            paddingBottom: safeFooterPadding
+            '@supports(min-height: calc(100% - 1em))': {
+                minHeight: safeFooterH,
+                paddingBottom: safeFooterPadding
+            }
         },
         constrainedWidth: {
             width: '100%',
             maxWidth: defaultMaxW,
-            '@supports(max-width: max(0px))': {
+            '@supports(max-width: max(1em, calc(100% - 1em)))': {
                 maxWidth: `min(${defaultMaxW}, ${safeW})`
             }
         }
