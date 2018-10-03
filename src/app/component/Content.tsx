@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import classNames from 'classnames';
 
-import { StandardProps } from '@material-ui/core';
+import { StandardProps, Theme } from '@material-ui/core';
 import { createStyles, withStyles } from '@material-ui/core/styles';
 import { ClassNameMap } from '@material-ui/core/styles/withStyles';
 
@@ -27,8 +27,11 @@ interface Props extends StandardProps<
 const cardsPath = config.paths.cards;
 const dicePath = config.paths.dice;
 
-const styles = createStyles({
-    root: { display: 'flex' },
+const styles = ({ palette }: Theme) => createStyles({
+    root: {
+        display: 'flex',
+        backgroundColor: palette.background.default
+    },
     content: { padding: '1rem' }
 });
 
