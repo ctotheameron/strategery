@@ -51,14 +51,10 @@ const styles = ({ palette }: Theme) => {
         header: { alignItems: 'center' },
         content: {
             flexGrow: 1,
-            paddingBottom: safeFooterH,
             justifyContent: 'center'
         },
         footer: {
-            position: 'absolute',
-            bottom: 0,
-            width: '100%',
-            height: safeFooterH,
+            minHeight: safeFooterH,
             backgroundColor: colors.grey[500],
             justifyContent: 'center',
             paddingBottom: safeFooterPadding
