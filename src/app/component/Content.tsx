@@ -29,7 +29,7 @@ const dicePath = config.paths.dice;
 
 const styles = createStyles({
     root: { display: 'flex' },
-    content: { padding: 16 }
+    content: { padding: '1rem' }
 });
 
 

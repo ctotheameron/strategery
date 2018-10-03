@@ -27,7 +27,7 @@ interface Props extends StandardProps<
 
 
 const styles = () => {
-    const footerHeight = 60;
+    const footerHeight = '3.75rem';
 
     return createStyles({
         '@global': { 'html, body, div#app': { height: '100%' } },
@@ -50,7 +50,7 @@ const styles = () => {
         },
         constrainedWidth: {
             width: '100%',
-            maxWidth: 800
+            maxWidth: '50rem'
         }
     });
 };
