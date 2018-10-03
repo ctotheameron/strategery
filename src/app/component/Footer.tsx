@@ -28,7 +28,7 @@ const styles = ({ palette }: Theme) => {
             height: '100%',
             display: 'flex'
         },
-        content: { paddingTop: 18 },
+        content: { paddingTop: '1.125rem' },
         label: {
             color: palette.common.white,
             textAlign: 'center'

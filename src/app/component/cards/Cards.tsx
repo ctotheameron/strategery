@@ -41,7 +41,7 @@ export interface Props extends StandardProps<
 const styles = createStyles({
     root: {},
     resultLabel: {
-        paddingTop: 16
+        paddingTop: '1rem'
     }
 });
 
@@ -59,11 +59,11 @@ export class Cards extends React.Component<Props, State> {
 
     public render() {
         const {
-            classes, className, isLoading, current, history, error, ...other
+            classes, className, isLoading, current, history, error
         } = this.props;
 
         return (
-            <div className={classNames(classes.root, className)} {...other}>
+            <div className={classNames(classes.root, className)}>
                 <Typography variant="title">Draw Some Cards</Typography>
                 <form onSubmit={this.handleSubmit}>
                     <TextField
