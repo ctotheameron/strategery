@@ -5,7 +5,8 @@ import { mount } from 'enzyme';
 
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
-import Typography from '@material-ui/core/Typography';
+
+import ProcomLogo from '@serviceslabs/material-ui-pro/icons/ProcomLogo';
 
 import config from '../../config';
 
@@ -16,13 +17,13 @@ const cardsPath = config.paths.cards;
 const dicePath = config.paths.dice;
 
 
-test('should have a title', () => {
+test('should have a logo', () => {
     const header = mount(
         <MemoryRouter><Header /></MemoryRouter>
     );
 
-    const typography = header.find(Typography);
-    expect(typography.children().text()).toBe('Do A Thing');
+    const logo = header.find(ProcomLogo);
+    expect(logo).toBeTruthy();
 });
 
 

@@ -7,8 +7,6 @@ import { StandardProps, Theme } from '@material-ui/core';
 import { createStyles, withStyles } from '@material-ui/core/styles';
 import { ClassNameMap } from '@material-ui/core/styles/withStyles';
 
-import { colors } from '@serviceslabs/material-ui-pro';
-
 import Content from './Content';
 import Footer from './Footer';
 import Header from './Header';
@@ -27,7 +25,7 @@ interface Props extends StandardProps<
 
 
 const styles = ({ palette }: Theme) => {
-    const footerHeight = '3.75rem';
+    const footerHeight = '5.5rem';
     const defaultMaxW = '50rem';
 
     const safeW = 'calc('
@@ -41,8 +39,7 @@ const styles = ({ palette }: Theme) => {
         '@global': {
             'html, body, div#app': {
                 height: '100%',
-                backgroundColor: palette.background.default,
-                WebkitTapHighlightColor: 'transparent'
+                backgroundColor: palette.background.default
             }
         },
         root: {
@@ -61,8 +58,6 @@ const styles = ({ palette }: Theme) => {
         },
         footer: {
             minHeight: footerHeight,
-            backgroundColor: colors.grey[500],
-            justifyContent: 'center',
             '@supports(min-height: calc(100% - 1em))': {
                 minHeight: safeFooterH,
                 paddingBottom: safeFooterPadding

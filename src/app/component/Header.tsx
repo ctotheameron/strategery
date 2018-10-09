@@ -16,7 +16,8 @@ import { ButtonBaseProps } from '@material-ui/core/ButtonBase';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+
+import ProcomLogo from '@serviceslabs/material-ui-pro/icons/ProcomLogo';
 
 import config from '../config';
 
@@ -69,9 +70,7 @@ const Header = withStyles(styles)(withRouter((
             className={classNames(classes.root, className)}
         >
             <Toolbar className={classes.toolbar}>
-                <Typography variant="headline" color="inherit">
-                    Do A Thing
-                </Typography>
+                <ProcomLogo style={{ fontSize: '3.5rem' }} />
             </Toolbar>
             <Tabs
                 className={classes.tabs}
