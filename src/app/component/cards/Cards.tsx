@@ -89,6 +89,7 @@ export class Cards extends React.Component<Props, State> {
                     />
                     <br />
                     <Button
+                        id="draw-button"
                         color="primary"
                         type="submit"
                         variant="contained"

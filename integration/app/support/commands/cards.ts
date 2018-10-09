@@ -58,7 +58,7 @@ function getDrawHistory() {
 
 
 function drawCards() {
-    return cy.get('button').click();
+    return cy.get('#draw-button').click();
 }
 
 Cypress.Commands.add('getDrawResult', getDrawResult);

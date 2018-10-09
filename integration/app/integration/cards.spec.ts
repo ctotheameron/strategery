@@ -3,7 +3,7 @@ describe('Cards Integration Test', () => {
         cy.visit('/');
         cy.get('a[href="/cards"]').click();
         cy.location().should(loc => expect(loc.pathname).to.eq('/cards'));
-        cy.get('h2').should(h2 => expect(h2).to.contain('Cards'));
+        cy.get('h6').should(h6 => expect(h6).to.contain('Cards'));
     });
 
 
