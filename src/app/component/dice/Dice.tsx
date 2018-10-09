@@ -65,7 +65,7 @@ export class Dice extends React.Component<Props, State> {
 
         return (
             <div className={classNames(classes.root, className)}>
-                <Typography variant="title">Roll Some Dice</Typography>
+                <Typography variant="h6">Roll Some Dice</Typography>
                 <form onSubmit={this.handleSubmit}>
                     <TextField
                         id="number-input"
@@ -108,7 +108,7 @@ export class Dice extends React.Component<Props, State> {
                 </form>
                 <Typography
                     className={classes.resultLabel}
-                    variant="subheading"
+                    variant="subtitle1"
                 >
                     Result:
                 </Typography>
@@ -121,7 +121,7 @@ export class Dice extends React.Component<Props, State> {
                 </span>
                 <Typography
                     className={classes.resultLabel}
-                    variant="subheading"
+                    variant="subtitle1"
                 >
                     History:
                 </Typography>

@@ -64,7 +64,7 @@ export class Cards extends React.Component<Props, State> {
 
         return (
             <div className={classNames(classes.root, className)}>
-                <Typography variant="title">Draw Some Cards</Typography>
+                <Typography variant="h6">Draw Some Cards</Typography>
                 <form onSubmit={this.handleSubmit}>
                     <TextField
                         id="number-input"
@@ -99,7 +99,7 @@ export class Cards extends React.Component<Props, State> {
                 </form>
                 <Typography
                     className={classes.resultLabel}
-                    variant="subheading"
+                    variant="subtitle1"
                 >
                     Result:
                 </Typography>
@@ -112,7 +112,7 @@ export class Cards extends React.Component<Props, State> {
                 </span>
                 <Typography
                     className={classes.resultLabel}
-                    variant="subheading"
+                    variant="subtitle1"
                 >
                     History:
                 </Typography>
