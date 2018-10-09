@@ -58,7 +58,7 @@ function getRollHistory() {
 
 
 function rollDice() {
-    return cy.get('button').click();
+    return cy.get('#roll-button').click();
 }
 
 Cypress.Commands.add('getRollResult', getRollResult);

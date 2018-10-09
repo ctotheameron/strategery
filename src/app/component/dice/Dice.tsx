@@ -98,6 +98,7 @@ export class Dice extends React.Component<Props, State> {
                     </TextField>
                     <br />
                     <Button
+                        id="roll-button"
                         color="primary"
                         type="submit"
                         variant="contained"
