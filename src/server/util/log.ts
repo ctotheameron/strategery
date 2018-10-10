@@ -1,5 +1,6 @@
+import createLogger from '@serviceslabs/logstash-node-logger';
+
 import config from '../config';
-import createLogger from './createLogger';
 
 
 const log = createLogger({
